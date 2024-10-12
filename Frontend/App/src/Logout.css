@@ -1,0 +1,36 @@
+.logout-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    text-align: center; /* Center text */
+}
+
+.logout-title {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem; /* Larger title */
+}
+
+.logout-message {
+    color: #666;
+    margin-bottom: 30px; /* Space between message and button */
+}
+
+.logout-button {
+    padding: 10px 20px;
+    background-color: #dc3545; /* Red background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Add transition for hover effect */
+}
+
+.logout-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}

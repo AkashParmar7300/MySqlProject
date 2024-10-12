@@ -1,0 +1,87 @@
+/* Background setup with a consistent gradient */
+.register-background {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff6b6b, #556270);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Register form container with similar styling to the login form */
+  .register-form-container {
+    background: rgba(255, 255, 255, 0.3); /* Transparent white background */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .register-form-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 45px rgba(31, 38, 135, 0.5);
+  }
+  
+  /* Register title styling */
+  .register-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the input fields */
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .input-group input:focus {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  /* Register button styling with similar color theme */
+  .register-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #34d399, #3b82f6);
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  }
+  
+  .register-btn:hover {
+    background: linear-gradient(135deg, #3b82f6, #34d399);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Success and error message styling */
+  .success-message {
+    margin-top: 15px;
+    color: #34d399; /* Green color for success message */
+  }
+  
+  .error-message {
+    margin-top: 15px;
+    color: #ff6b6b; /* Red color for error message */
+  }
+  

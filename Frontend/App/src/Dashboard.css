@@ -1,34 +1,136 @@
 /* Dashboard.css */
-body {
-    background-color: #f8f9fa; /* Light background color */
-    font-family: 'Arial', sans-serif; /* Use a clean font */
+
+/* Dashboard container with moving background gradient */
+.dashboard {
+    position: relative; /* Allows shapes to move within this container */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Ensures shapes don't overflow outside the container */
+    background:linear-gradient(135deg, #ff6b6b, #556270);/* Gradient background */
+    background-size: 600% 600%; /* Allows the gradient to move */
+    animation: gradientAnimation 12s ease infinite; /* Gradient animation */
 }
 
-.sidebar-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: #007bff; /* Button color */
-    color: white;
-    border: none;
+/* Gradient animation for a smooth transition */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* General shape styling */
+.shape {
+    position: absolute;
+    opacity: 0.8; /* Slightly more visible */
+    animation: moveShape 30s linear infinite; /* Common animation for all shapes */
+}
+
+/* Moving circles */
+.circle {
+    border-radius: 50%;
+}
+
+/* Moving squares */
+.square {
+}
+
+/* Moving triangles */
+.triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 30px 52px 30px;
+    border-color: transparent transparent rgba(255, 165, 0, 0.8) transparent; /* Orange color for triangles */
+}
+
+/* Unique styles for each shape with colors */
+.circle:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    top: 10%;
+    left: 15%;
+    background: rgba(255, 0, 0, 0.7); /* Red color */
+    animation-duration: 10s;
+    animation-delay: 0s;
+}
+.circle:nth-child(2) {
+    width: 80px;
+    height: 80px;
+    top: 30%;
+    left: 50%;
+    background: rgba(0, 128, 0, 0.7); /* Green color */
+    animation-duration: 22s;
+    animation-delay: 2s;
+}
+
+.square:nth-child(3) {
+    width: 90px;
+    height: 90px;
+    top: 60%;
+    left: 20%;
+    background: rgba(0, 0, 255, 0.7); /* Blue color */
+    animation-duration: 25s;
+    animation-delay: 4s;
+}
+.square:nth-child(4) {
+    width: 70px;
+    height: 70px;
+    top: 75%;
+    left: 40%;
+    background: rgba(255, 255, 0, 0.7); /* Yellow color */
+    animation-duration: 20s;
+    animation-delay: 6s;
+}
+
+.triangle:nth-child(5) {
+    top: 40%;
+    left: 80%;
+    animation-duration: 30s;
+    animation-delay: 8s;
+}
+.triangle:nth-child(6) {
+    top: 15%;
+    left: 60%;
+    animation-duration: 28s;
+    animation-delay: 10s;
+}
+
+/* Shape movement animation */
+@keyframes moveShape {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(50px, 100px) rotate(180deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    align-items: center;
     padding: 10px 20px;
-    cursor: pointer;
-    z-index: 1000; /* Ensure button is above other content */
-    border-radius: 5px; /* Rounded corners */
+    background-color: linear-gradient(135deg, #911212, #0d1e31);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Hamburger icon */
+.hamburger-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+/* Sidebar styles */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px; /* Hidden off-screen */
+    position: absolute;
+    left: -250px; /* Hidden offscreen */
     width: 250px;
     height: 100%;
-    background-color: #007bff; /* Sidebar background color */
-    color: white;
-    transition: left 0.3s ease; /* Animation for sliding in/out */
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
-    z-index: 999; /* Ensure sidebar is above other content */
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1000; /* Ensures sidebar is above background shapes */
 }
 
 .sidebar.open {
@@ -36,62 +138,92 @@ body {
 }
 
 .sidebar-header {
-    margin-bottom: 20px;
+    padding: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
 }
 
+/* Sidebar navigation */
+.sidebar-nav {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin: 10px 0;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #34495e;
+    padding: 10px;
+    display: block;
+    transition: background 0.3s;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(46, 204, 113, 0.2); /* Light hover effect */
+}
+
+/* Close button for the sidebar */
 .close-btn {
     background: none;
     border: none;
-    color: white;
-    font-size: 30px;
+    font-size: 1.5rem;
     cursor: pointer;
     position: absolute;
     top: 10px;
     right: 10px;
+    color: #2ecc71;
 }
 
-.sidebar-nav {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0; /* Remove default padding */
-}
-
-.sidebar-nav li {
-    margin: 10px 0; /* Space between items */
-}
-
-.sidebar-nav a {
-    color: white; /* Link color */
-    text-decoration: none; /* Remove underline */
-}
-
-.sidebar-nav a:hover {
-    text-decoration: underline; /* Underline on hover */
-}
-
+/* Overlay styles */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transition: opacity 0.3s ease; /* Animation for fading in/out */
-    z-index: 998; /* Below the sidebar */
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 500; /* Ensures overlay is above background shapes */
 }
 
 .overlay.active {
-    opacity: 1; /* Show overlay when sidebar is open */
+    opacity: 1;
+    visibility: visible; /* Show overlay when sidebar is open */
 }
 
+/* Container for the main content */
 .container {
-    padding: 2rem; /* Add padding to the content area */
-    background-color: white; /* White background for the content area */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    flex: 1;
+    padding: 20px;
+    z-index: 1; /* Ensures content is above background shapes */
+}
+.group-members {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px; /* Space above the group members */
 }
 
-h1 {
-    color: #333; /* Darker color for the heading */
-    font-weight: bold; /* Bold heading */
+.group-members h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.group-members ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.group-members li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd; /* Optional border between members */
+}
+
+.group-members li:last-child {
+    border-bottom: none; /* Remove border for last item */
 }
