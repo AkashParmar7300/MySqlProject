@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ChangePassword.css';
-
+import { useNavigate } from 'react-router-dom'; 
 const ChangePassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [message, setMessage] = useState('');
     const [userId, setUserId] = useState('');
-
+    const navigate = useNavigate();  // Initialize useNavigate
     useEffect(() => {
         const storedUserId = localStorage.getItem('userId');
         if (storedUserId) {
@@ -30,6 +30,7 @@ const ChangePassword = () => {
                 newPassword,
             });
             setMessage('Password updated successfully!');
+            navigate('/Dashboard');
         } catch (error) {
             console.error('Error updating password:', error);
             setMessage('Failed to update password. Please try again.');

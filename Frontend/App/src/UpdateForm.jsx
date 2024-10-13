@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './UpdateForm.css'; // Import your custom CSS
-
+import { useNavigate } from 'react-router-dom'; 
 const UpdateForm = () => {
     const [ID, setProductId] = useState('');
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState('');
     const [quantity, setQuantity] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate(); 
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -20,6 +21,7 @@ const UpdateForm = () => {
             });
     
             setMessage(response.data.message || 'Product updated successfully!');
+            navigate('/Dashboard'); 
         } catch (error) {
             if (error.response && error.response.status === 404) {
                 setMessage('Product not found. Please check the product ID and try again.');

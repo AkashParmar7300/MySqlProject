@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate hook
 import './RegisterForm.css';
 
 const RegisterForm = () => {
@@ -7,6 +8,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate();  // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +23,9 @@ const RegisterForm = () => {
       setSuccess(response.data.message || 'User registered successfully!');
       setEmail('');
       setPassword('');
+
+      // Redirect to login page after successful registration
+      navigate('/');  // This will navigate to the login page
     } catch (err) {
       if (err.response) {
         if (err.response.status === 400) {

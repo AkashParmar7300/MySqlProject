@@ -26,7 +26,7 @@ const LoginForm = ({ onLogin }) => {
       if (response.data.success) {
         const userId = response.data.userId;
         localStorage.setItem('userId', userId);
-        onLogin(email);
+        onLogin(email, userId);  // Pass both email and userId to onLogin
         navigate('/dashboard');
       } else {
         setError('Invalid credentials, please try again.');
@@ -63,7 +63,7 @@ const LoginForm = ({ onLogin }) => {
           <div className="animation-circle"></div>
           <div className="animation-circle"></div>
         </div>
-        <h2 style={{ color: 'white' }}>Welcome to Our Application!</h2>
+        <h2 style={{ color: 'white' }}>Welcome to Farz!! Application</h2>
       </motion.div>
       <motion.div
         className="login-form-container"
